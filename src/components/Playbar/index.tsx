@@ -64,7 +64,9 @@ export function Playbar(): JSX.Element {
             state.setTrackCount(data);
             audioRef.current?.play();
         }
-        state.setCount(data[state.index].count);
+        if (!isLoading) {
+            state.setCount(data[state.index].count);
+        }
     }, [state.index, state.isPlaying]);
 
     useEffect(() => {
@@ -81,9 +83,9 @@ export function Playbar(): JSX.Element {
                 return function () {
                     clearInterval(timer);
                 };
-            }, 100);
+            }, 1000);
         }
-    }, [audioRef]);
+    }, [audioRef, state.isPlaying]);
 
     useEffect(() => {
         if (
