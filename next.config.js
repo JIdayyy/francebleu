@@ -1,3 +1,15 @@
-const withPlugins = require("next-compose-plugins");
+const compose = require("next-compose");
 
-module.exports = withPlugins([], {});
+module.exports = compose([
+    {
+        webpack(config) {
+            config.module.rules.push({
+                test: /\.mp4$/,
+                use: {
+                    loader: "file-loader",
+                },
+            });
+            return config;
+        },
+    },
+]);
