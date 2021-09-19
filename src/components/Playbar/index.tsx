@@ -99,7 +99,9 @@ export function Playbar(): JSX.Element {
     return (
         <div className="bg-black absolute bottom-10 bg-opacity-90 p-5 rounded-lg shadow-lg flex items-center align-middle justify-center">
             <div className="text-white font-bold mx-4">
-                {state.isPlaying && Convert(audioRef.current?.currentTime)}
+                {state.isPlaying &&
+                    audioRef.current!.currentTime > 0 &&
+                    Convert(audioRef.current?.currentTime)}
             </div>
 
             <button
@@ -131,6 +133,7 @@ export function Playbar(): JSX.Element {
             </button>
             <div className="text-white font-bold mx-4">
                 {state.isPlaying &&
+                    audioRef.current!.currentTime > 0 &&
                     Convert(
                         audioRef.current!.duration -
                             audioRef.current!.currentTime,
