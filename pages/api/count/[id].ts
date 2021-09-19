@@ -6,7 +6,7 @@ export default async function userHandler(
     res: NextApiResponse<unknown>,
 ): Promise<void> {
     const { id } = req.query;
-    console.log(typeof id);
+
     if (req.method === "PUT") {
         try {
             const track = await prisma.track.update({

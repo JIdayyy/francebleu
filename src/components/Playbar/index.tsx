@@ -7,7 +7,7 @@ import { useQuery } from "react-query";
 export function Playbar(): JSX.Element {
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const state = useAppContext();
-    console.log(state);
+
     const { data, isLoading, error, refetch } = useQuery(
         "getCount",
         () =>
