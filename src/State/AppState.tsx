@@ -1,4 +1,4 @@
-import {
+import React, {
     createContext,
     Dispatch,
     SetStateAction,
@@ -54,7 +54,11 @@ const AppState = createContext<AppState>(AppContextDefault);
 export function useAppContext(): AppState {
     return useContext(AppState);
 }
-export function AppContextWrapper({ children }: Props): JSX.Element {
+export function AppContextWrapper({
+    children,
+}: {
+    children: React.ReactNode;
+}): JSX.Element {
     const [isLoading, setIsLoading] = useState(false);
     const [index, setIndex] = useState(0);
     const [onListen, setOnListen] = useState(tracks[index].url);

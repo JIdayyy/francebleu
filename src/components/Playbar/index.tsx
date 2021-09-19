@@ -45,12 +45,12 @@ export function Playbar(): JSX.Element {
 
     useEffect(() => {
         const timer = window.setInterval(() => {
-            if (audioRef.current.currentTime > 0) {
+            if (audioRef.current!.currentTime > 0) {
                 state.setCurrentTime(
-                    Math.floor(audioRef.current.currentTime as number),
+                    Math.floor(audioRef.current!.currentTime as number),
                 );
                 state.setDuration(
-                    Math.floor(audioRef.current.duration as number),
+                    Math.floor(audioRef.current!.duration as number),
                 );
             }
         }, 100);
@@ -95,8 +95,8 @@ export function Playbar(): JSX.Element {
             <div className="text-white font-bold mx-4">
                 {state.isPlaying &&
                     Convert(
-                        audioRef.current?.duration -
-                            audioRef.current?.currentTime,
+                        audioRef.current!.duration -
+                            audioRef.current!.currentTime,
                     )}
             </div>
             <audio ref={audioRef} src={state.onListen}></audio>
