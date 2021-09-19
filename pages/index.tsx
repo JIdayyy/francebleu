@@ -15,7 +15,8 @@ const Home: React.FC = () => {
                 {state.tracks[state.index].name}
                 <span className="font-normal">
                     ( Cet épisode à été écouté{" "}
-                    {state.trackCount[state.index].count} fois )
+                    {state.trackCount && state.trackCount[state.index].count}{" "}
+                    fois )
                 </span>
             </div>
             <div className="z-50 absolute text-white w-96 bg-black bg-opacity-90 rounded-lg p-10">

@@ -12,6 +12,13 @@ interface Track {
     description: string;
     url: string;
 }
+interface TrackC {
+    id: number;
+    name: string;
+    description: string;
+    url: string;
+    count: number;
+}
 
 export interface AppState {
     setIsLoading: Dispatch<SetStateAction<boolean>> | null;
@@ -28,8 +35,8 @@ export interface AppState {
     setDuration: Dispatch<SetStateAction<number>>;
     setVolume: Dispatch<SetStateAction<number>>;
     setCurrentTime: Dispatch<SetStateAction<number>>;
-    setTrackCount: Dispatch<SetStateAction<Track[]>>;
-    trackCount: Track[] | null;
+    setTrackCount: Dispatch<SetStateAction<[]>>;
+    trackCount: TrackC[] | null;
     volume: number;
 }
 
@@ -48,8 +55,7 @@ const AppContextDefault: AppState = {
     setIsPlaying: null as unknown as Dispatch<SetStateAction<boolean>>,
     setDuration: null as unknown as Dispatch<SetStateAction<number>>,
     setCurrentTime: null as unknown as Dispatch<SetStateAction<number>>,
-    setTrackCount: null as unknown as Dispatch<SetStateAction<Track[]>>,
-
+    setTrackCount: null as unknown as Dispatch<SetStateAction<[]>>,
     duration: 0,
     currentTime: 0,
 };
@@ -71,7 +77,7 @@ export function AppContextWrapper({
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
     const [volume, setVolume] = useState(0.5);
-    const [trackCount, setTrackCount] = useState(tracks);
+    const [trackCount, setTrackCount] = useState<[]>([]);
 
     return (
         <AppState.Provider
