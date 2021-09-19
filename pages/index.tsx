@@ -22,7 +22,7 @@ const Home: React.FC = () => {
             <div className="z-0 relative w-full h-full">
                 <Image className="z-0" layout="fill" src="/bgalien.jpg" />
             </div>
-            <div className="absolute text-sm items-center align-middle justify-between top-0 sm:top-40 flex flex-col text-gray-200 font-bold bg-black rounded-lg bg-opacity-90 p-5">
+            <div className="absolute text-sm items-center align-middle justify-between top-0 w-auto sm:top-40 flex flex-col text-gray-200 font-bold bg-black rounded-lg bg-opacity-90 p-5">
                 {state.tracks[state.index].name}
                 <span className="font-normal">( {state.count} écoutes )</span>
             </div>
