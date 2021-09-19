@@ -2,10 +2,24 @@ import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { useAppContext } from "src/State/AppState";
 import Convert from "../../hooks/useConvert.js";
+import axios from "axios";
+import { useQuery } from "react-query";
 export function Playbar(): JSX.Element {
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const state = useAppContext();
     console.log(state);
+    const { data, isLoading, error, refetch } = useQuery(
+        "getCount",
+        () =>
+            axios
+                .get(process.env.NEXT_PUBLIC_API_URL as string)
+                .then((r) => r.data),
+        {
+            onSuccess: (data) => {
+                state.setTrackCount(data);
+            },
+        },
+    );
 
     const controls = {
         play: () => state.setIsPlaying(true),
@@ -39,24 +53,42 @@ export function Playbar(): JSX.Element {
     useEffect(() => {
         audioRef.current?.load();
         if (state.isPlaying === true) {
+            axios.put(
+                `${process.env.NEXT_PUBLIC_API_URL}/${
+                    state.tracks[state.index].id
+                }`,
+            );
+            refetch();
+            state.setTrackCount(data);
             audioRef.current?.play();
         }
     }, [state.index, state.isPlaying]);
 
     useEffect(() => {
-        const timer = window.setInterval(() => {
-            if (audioRef.current!.currentTime > 0) {
-                state.setCurrentTime(
-                    Math.floor(audioRef.current!.currentTime as number),
-                );
-                state.setDuration(
-                    Math.floor(audioRef.current!.duration as number),
-                );
-            }
-        }, 100);
-        return function () {
-            clearInterval(timer);
-        };
+        if (state.isPlaying) {
+            const timer = window.setInterval(() => {
+                if (audioRef.current!.currentTime > 0) {
+                    state.setCurrentTime(
+                        Math.floor(audioRef.current!.currentTime as number),
+                    );
+                    state.setDuration(
+                        Math.floor(audioRef.current!.duration as number),
+                    );
+                }
+                return function () {
+                    clearInterval(timer);
+                };
+            }, 100);
+        }
+    }, [audioRef]);
+
+    useEffect(() => {
+        if (
+            audioRef.current?.currentTime === audioRef.current?.duration &&
+            state.isPlaying
+        ) {
+            controls.forward();
+        }
     }, [audioRef]);
 
     return (

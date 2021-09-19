@@ -1,0 +1,1 @@
+{"ast":null,"code":"const secondsToHms = d => {\n  d = Number(d);\n  let m = Math.floor(d % 3600 / 60);\n  let s = Math.floor(d % 3600 % 60);\n  return \"0\" + m + \":\" + s;\n};\n\nexport default secondsToHms;","map":null,"metadata":{},"sourceType":"module"}

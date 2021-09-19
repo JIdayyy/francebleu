@@ -11,8 +11,12 @@ const Home: React.FC = () => {
             <div className="z-0 relative w-full h-full">
                 <Image className="z-0" layout="fill" src="/bgalien.jpg" />
             </div>
-            <div className="absolute top-10 text-white font-bold bg-black rounded-lg bg-opacity-90 p-5">
+            <div className="absolute top-10 flex flex-col text-white font-bold bg-black rounded-lg bg-opacity-90 p-5">
                 {state.tracks[state.index].name}
+                <span className="font-normal">
+                    ( Cet épisode à été écouté{" "}
+                    {state.trackCount[state.index].count} fois )
+                </span>
             </div>
             <div className="z-50 absolute text-white w-96 bg-black bg-opacity-90 rounded-lg p-10">
                 Un feuilleton proposé par la Compagnie Lézards qui Bougent,

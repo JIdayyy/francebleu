@@ -10,7 +10,7 @@ const Tracks = [
         id: 2,
         name: "Que se passe-t-il sur terre ? ( Partie 2 )",
         description: "Episode 2 description",
-        url: "/audio/episode2.mp4",
+        url: "./audio/episode2.mp4",
     },
     {
         id: 3,
