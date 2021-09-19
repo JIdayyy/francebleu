@@ -3,6 +3,7 @@ import React, {
     Dispatch,
     SetStateAction,
     useContext,
+    useEffect,
     useState,
 } from "react";
 import tracks from "../datas";
@@ -38,6 +39,8 @@ export interface AppState {
     setTrackCount: Dispatch<SetStateAction<[]>>;
     trackCount: TrackC[] | null;
     volume: number;
+    count: number;
+    setCount: Dispatch<SetStateAction<number>>;
 }
 
 const AppContextDefault: AppState = {
@@ -48,6 +51,8 @@ const AppContextDefault: AppState = {
     setIsLoading: null,
     index: 0,
     onListen: tracks[0].url,
+    count: 0,
+    setCount: null as unknown as Dispatch<SetStateAction<number>>,
     trackCount: null,
     setOnListen: null as unknown as Dispatch<SetStateAction<string>>,
     setVolume: null as unknown as Dispatch<SetStateAction<number>>,
@@ -78,6 +83,7 @@ export function AppContextWrapper({
     const [currentTime, setCurrentTime] = useState(0);
     const [volume, setVolume] = useState(0.5);
     const [trackCount, setTrackCount] = useState<[]>([]);
+    const [count, setCount] = useState<number>(0);
 
     return (
         <AppState.Provider
@@ -92,6 +98,8 @@ export function AppContextWrapper({
                 setOnListen,
                 volume,
                 setVolume,
+                count,
+                setCount,
                 onListen,
                 index,
                 setIndex,

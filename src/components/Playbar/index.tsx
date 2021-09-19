@@ -17,6 +17,7 @@ export function Playbar(): JSX.Element {
         {
             onSuccess: (data) => {
                 state.setTrackCount(data);
+                state.setCount(data[state.index].count);
             },
         },
     );
@@ -59,9 +60,11 @@ export function Playbar(): JSX.Element {
                 }`,
             );
             refetch();
+            state.setCount(data[state.index].count);
             state.setTrackCount(data);
             audioRef.current?.play();
         }
+        state.setCount(data[state.index].count);
     }, [state.index, state.isPlaying]);
 
     useEffect(() => {

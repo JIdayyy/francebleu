@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 import { Playlist } from "@components/Playlist";
@@ -6,17 +6,17 @@ import { Playbar } from "@components/Playbar";
 import { useAppContext } from "src/State/AppState";
 const Home: React.FC = () => {
     const state = useAppContext();
+
     return (
         <div className="w-full z-0 relative flex flex-col items-center align-middle justify-center h-screen">
+            <Image width={150} height={75} src="/logo.webp" />
             <div className="z-0 relative w-full h-full">
                 <Image className="z-0" layout="fill" src="/bgalien.jpg" />
             </div>
             <div className="absolute top-10 flex flex-col text-white font-bold bg-black rounded-lg bg-opacity-90 p-5">
                 {state.tracks[state.index].name}
                 <span className="font-normal">
-                    ( Cet épisode à été écouté{" "}
-                    {state.trackCount && state.trackCount[state.index].count}{" "}
-                    fois )
+                    ( Cet épisode à été écouté {state.count} fois )
                 </span>
             </div>
             <div className="z-50 absolute text-white w-96 bg-black bg-opacity-90 rounded-lg p-10">
