@@ -99,9 +99,9 @@ export function Playbar(): JSX.Element {
     return (
         <div className="bg-black absolute bottom-10 bg-opacity-90 p-5 rounded-lg shadow-lg flex items-center align-middle justify-center">
             <div className="text-white font-bold mx-4">
-                {state.isPlaying &&
-                    audioRef.current!.currentTime > 0 &&
-                    Convert(audioRef.current?.currentTime)}
+                {state.isPlaying && audioRef.current!.currentTime > 0
+                    ? Convert(audioRef.current?.currentTime)
+                    : "00:00"}
             </div>
 
             <button
@@ -132,12 +132,12 @@ export function Playbar(): JSX.Element {
                 <Image src="/icons/forward.png" width={22} height={22} />
             </button>
             <div className="text-white font-bold mx-4">
-                {state.isPlaying &&
-                    audioRef.current!.currentTime > 0 &&
-                    Convert(
-                        audioRef.current!.duration -
-                            audioRef.current!.currentTime,
-                    )}
+                {state.isPlaying && audioRef.current!.currentTime > 0
+                    ? Convert(
+                          audioRef.current!.duration -
+                              audioRef.current!.currentTime,
+                      )
+                    : "00:00"}
             </div>
             <audio ref={audioRef} src={state.onListen}></audio>
         </div>

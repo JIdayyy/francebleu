@@ -9,8 +9,15 @@ const Home: React.FC = () => {
 
     return (
         <div className="w-full z-0 relative flex flex-col items-center align-middle justify-center h-screen">
-            <div className="absolute top-10 left-10">
-                <Image width={150} height={75} src="/logo.webp" />
+            <div className="absolute z-50 top-10 left-10">
+                <a href="https://www.lezardsquibougent.com/">
+                    <Image
+                        width={130}
+                        height={50}
+                        src="/logo.webp"
+                        quality={100}
+                    />
+                </a>
             </div>
             <div className="z-0 relative w-full h-full">
                 <Image className="z-0" layout="fill" src="/bgalien.jpg" />
