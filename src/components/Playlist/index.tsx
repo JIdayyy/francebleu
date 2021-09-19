@@ -7,7 +7,7 @@ export function Playlist(): JSX.Element {
             <ul className="py-5">
                 {state.tracks.map((track) => (
                     <li className="my-2 hover:bg-gray-900 w-full px-5">
-                        <button onClick={() => state.setIndex(track.id)}>
+                        <button onClick={() => state.setIndex(track.id - 1)}>
                             {track.name}
                         </button>
                     </li>
