@@ -72,6 +72,12 @@ export function Playbar(): JSX.Element {
 
     useEffect(() => {
         if (state.isPlaying) {
+             if (
+            audioRef.current?.currentTime === audioRef.current?.duration &&
+            audioRef.current?.currentTime > 0
+        ) {
+            controls.forward();
+        }
             const timer = window.setInterval(() => {
                 if (audioRef.current!.currentTime > 0) {
                     state.setCurrentTime(
