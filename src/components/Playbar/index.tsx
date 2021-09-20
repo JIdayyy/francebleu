@@ -6,7 +6,7 @@ import Convert from "../../hooks/useConvert.js";
 import axios from "axios";
 import { useQuery } from "react-query";
 export function Playbar(): JSX.Element {
-    const audioRef = useRef<HTMLAudioElement | null>();
+    const audioRef = useRef<HTMLAudioElement | null>(null);
     const state = useAppContext();
 
     const { data, isLoading, error, refetch } = useQuery(
