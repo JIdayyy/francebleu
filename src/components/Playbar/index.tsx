@@ -94,15 +94,6 @@ export function Playbar(): JSX.Element {
         }
     }, [audioRef, state.isPlaying]);
 
-    useEffect(() => {
-        if (
-            audioRef.current?.currentTime === audioRef.current?.duration &&
-            state.isPlaying
-        ) {
-            controls.forward();
-        }
-    }, [audioRef]);
-
     return (
         <div className="bg-black absolute bottom-10 bg-opacity-90 p-5 rounded-lg shadow-lg flex items-center align-middle justify-center">
             <div className="text-white font-bold mx-4">
