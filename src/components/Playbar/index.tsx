@@ -6,7 +6,7 @@ import Convert from "../../hooks/useConvert.js";
 import axios from "axios";
 import { useQuery } from "react-query";
 export function Playbar(): JSX.Element {
-    const audioRef = useRef<HTMLAudioElement | null>(null);
+    const audioRef = useRef<HTMLAudioElement | null>();
     const state = useAppContext();
 
     const { data, isLoading, error, refetch } = useQuery(
@@ -72,12 +72,12 @@ export function Playbar(): JSX.Element {
 
     useEffect(() => {
         if (state.isPlaying) {
-             if (
-            audioRef.current?.currentTime === audioRef.current?.duration &&
-            audioRef.current?.currentTime > 0
-        ) {
-            controls.forward();
-        }
+            if (
+                audioRef.current!.currentTime === audioRef.current?.duration &&
+                audioRef.current.currentTime > 0
+            ) {
+                controls.forward();
+            }
             const timer = window.setInterval(() => {
                 if (audioRef.current!.currentTime > 0) {
                     state.setCurrentTime(
