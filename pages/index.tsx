@@ -28,9 +28,23 @@ const Home: React.FC = () => {
                     viewBox="0 0 34 27"
                     enable-background="new 0 0 34 27"
                 >
-                    <rect fill="#FFFFFF" width="34" height="4" />
-                    <rect y="11" fill="#FFFFFF" width="34" height="4" />
-                    <rect y="23" fill="#FFFFFF" width="34" height="4" />
+                    <rect
+                        fill={isMenu ? "#00000" : "#FFFFFF"}
+                        width="34"
+                        height="4"
+                    />
+                    <rect
+                        y="11"
+                        fill={isMenu ? "#00000" : "#FFFFFF"}
+                        width="34"
+                        height="4"
+                    />
+                    <rect
+                        y="23"
+                        fill={isMenu ? "#00000" : "#FFFFFF"}
+                        width="34"
+                        height="4"
+                    />
                 </svg>
             </button>
             <div className="absolute hidden sm:flex z-40 top-10 left-10">
@@ -46,7 +60,7 @@ const Home: React.FC = () => {
             <div className="z-0 relative w-full h-full">
                 <Image className="z-0" layout="fill" src="/bgalien.jpg" />
             </div>
-            <div className="absolute text-sm items-center align-middle justify-between top-10 w-auto sm:top-40 sm:w-96 flex flex-col text-gray-200 font-bold bg-black rounded-lg bg-opacity-90 p-5">
+            <div className="absolute text-sm items-center align-middle justify-between top-10 w-auto sm:top-20 sm:w-96 flex flex-col text-gray-200 font-bold bg-black rounded-lg bg-opacity-90 p-5">
                 {state.tracks[state.index].name}
                 <span className="font-normal">( {state.count} écoutes )</span>
             </div>
