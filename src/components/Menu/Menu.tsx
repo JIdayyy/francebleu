@@ -39,14 +39,15 @@ export default function Menu({ setIsOpen }: Props): ReactElement {
                         <motion.button
                             onClick={handleClick}
                             value={track.id}
-                            className="text-gray-900 w-full text-sm sm:text-base text-left my-2 md:text-xl lg:text-4xl font-bold"
+                            className={`text-gray-900 w-full rounded-lg px-2 py-1 ${
+                                state.index + 1 === track.id && "bg-gray-400"
+                            } text-sm sm:text-base text-left my-2 md:text-xl lg:text-4xl font-bold`}
                         >
                             {track.name}
                         </motion.button>
                     ))}
                 </motion.div>
                 <div className="absolute bottom-0 left-2">
-                    {" "}
                     <Image width={130} height={50} src="/logo.webp" />
                 </div>
             </motion.ul>

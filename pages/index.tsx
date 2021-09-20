@@ -65,11 +65,11 @@ const Home: React.FC = () => {
                 <span className="font-normal">( {state.count} écoutes )</span>
             </div>
             <motion.div className="z-40 absolute text-white sm:w-96 bg-black bg-opacity-90 md:rounded-lg p-10">
-                Un feuilleton proposé par la Compagnie Lézards qui Bougent,
+                Un feuilleton proposé par la Compagnie Lézards 🦎 qui Bougent,
                 imaginé et écrit par les jeunes de l'Espace Socio-Culturel
                 Municipal et de la Maison de la Vie Citoyenne Saint-Étienne de
-                Bayonne, et interprété par les élèves de l'école de théâtre
-                Scaramuccia de Saint-Jean de Luz.
+                Bayonne 🌎, et interprété par les élèves de l'école de théâtre
+                Scaramuccia de Saint-Jean de Luz 🧑‍🎓.
             </motion.div>
             <Playlist />
             <Playbar />
