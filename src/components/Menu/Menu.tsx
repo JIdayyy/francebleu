@@ -38,7 +38,7 @@ export default function Menu({ setIsOpen }: Props): ReactElement {
                         <motion.button
                             onClick={handleClick}
                             value={track.id}
-                            className="text-white w-full text-sm text-left my-2 md:text-xl lg:text-4xl font-bold"
+                            className="text-white w-full text-sm sm:text-base text-left my-2 md:text-xl lg:text-4xl font-bold"
                         >
                             {track.name}
                         </motion.button>

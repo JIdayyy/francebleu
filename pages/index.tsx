@@ -10,7 +10,7 @@ const Home: React.FC = () => {
     const state = useAppContext();
 
     return (
-        <div className="w-full z-0 relative flex flex-col items-center align-middle justify-center h-screen md:px-56 bg-black">
+        <div className="w-full z-0 relative flex flex-col items-center align-middle justify-center h-screen  md:px-56 bg-black">
             <AnimatePresence>
                 {isMenu && <Menu setIsOpen={setIsMenu} />}
             </AnimatePresence>
@@ -50,7 +50,7 @@ const Home: React.FC = () => {
                 {state.tracks[state.index].name}
                 <span className="font-normal">( {state.count} écoutes )</span>
             </div>
-            <motion.div className="z-40 absolute text-white sm:w-96 bg-black bg-opacity-90 rounded-lg p-10">
+            <motion.div className="z-40 absolute text-white sm:w-96 bg-black bg-opacity-90 md:rounded-lg p-10">
                 Un feuilleton proposé par la Compagnie Lézards qui Bougent,
                 imaginé et écrit par les jeunes de l'Espace Socio-Culturel
                 Municipal et de la Maison de la Vie Citoyenne Saint-Étienne de
