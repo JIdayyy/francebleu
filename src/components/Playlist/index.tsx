@@ -11,13 +11,19 @@ export function Playlist(): JSX.Element {
                         key={track.id}
                         className={`my-2 ${
                             state.index + 1 === track.id && "bg-gray-800"
-                        } w-full px-5`}
+                        } w-full px-5  `}
                     >
                         <button
-                            className="font-bold"
+                            className="font-bold flex items-center align-middle justify-center w-full"
                             onClick={() => state.setIndex(track.id - 1)}
                         >
-                            {track.name} {state.index + 1 === track.id && "🎵"}
+                            {track.name}{" "}
+                            {state.index + 1 === track.id && (
+                                <img
+                                    src="/SOUCOUPE.png"
+                                    className="w-10 mx-2"
+                                />
+                            )}
                         </button>
                     </li>
                 ))}
