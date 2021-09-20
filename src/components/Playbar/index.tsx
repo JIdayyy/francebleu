@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { useAppContext } from "src/State/AppState";

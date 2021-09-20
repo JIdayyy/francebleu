@@ -12,6 +12,7 @@
     "dependencies": {
         "@prisma/client": "^3.0.2",
         "axios": "^0.21.1",
+        "framer-motion": "^4.1.17",
         "next": "10.2.0",
         "next-compose-plugins": "^2.2.1",
         "prettier": "^2.2.1",
