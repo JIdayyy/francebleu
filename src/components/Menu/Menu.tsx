@@ -49,7 +49,9 @@ export default function Menu({ setIsOpen }: Props): ReactElement {
                     ))}
                 </motion.div>
                 <div className="absolute bottom-0 left-2">
-                    <Image width={130} height={50} src="/logo.webp" />
+                    <a href="https://www.lezardsquibougent.com/">
+                        <Image width={130} height={50} src="/logo.webp" />
+                    </a>
                 </div>
             </motion.ul>
         </motion.div>
