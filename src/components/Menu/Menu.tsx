@@ -44,7 +44,13 @@ export default function Menu({ setIsOpen }: Props): ReactElement {
                                 state.index + 1 === track.id && "bg-gray-400"
                             } text-sm sm:text-base text-left my-2 md:text-xl lg:text-4xl font-bold`}
                         >
-                            {track.name}
+                            {track.name}{" "}
+                            {state.index + 1 === track.id && (
+                                <img
+                                    src="/SOUCOUPE.png"
+                                    className="w-10 mx-2"
+                                />
+                            )}
                         </motion.button>
                     ))}
                 </motion.div>
