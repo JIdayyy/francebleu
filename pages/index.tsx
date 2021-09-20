@@ -52,17 +52,17 @@ const Home: React.FC = () => {
                 </svg>
             </button>
 
-            <div className="absolute hidden sm:flex z-40 top-10 left-10">
-                <a href="https://www.lezardsquibougent.com/">
-                    <Image
-                        width={130}
-                        height={50}
-                        src="/logo.webp"
-                        quality={100}
-                    />
-                </a>
-            </div>
             <div className="z-0 relative w-full h-full">
+                <div className="absolute hidden sm:flex z-40 top-10 right-10">
+                    <a href="https://www.lezardsquibougent.com/">
+                        <Image
+                            width={130}
+                            height={50}
+                            src="/logo.webp"
+                            quality={100}
+                        />
+                    </a>
+                </div>
                 <Image className="z-0" layout="fill" src="/bgalien.jpg" />
             </div>
             <div className="absolute text-sm items-center align-middle justify-between top-10 w-auto sm:top-20 sm:w-96 flex flex-col text-gray-200 font-bold bg-black rounded-lg bg-opacity-90 p-5">
