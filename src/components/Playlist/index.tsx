@@ -8,6 +8,7 @@ export function Playlist(): JSX.Element {
             <ul className="py-5">
                 {state.tracks.map((track) => (
                     <li
+                        key={track.id}
                         className={`my-2 ${
                             state.index + 1 === track.id && "bg-gray-800"
                         } w-full px-5`}

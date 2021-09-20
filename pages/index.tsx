@@ -26,7 +26,6 @@ const Home: React.FC = () => {
                     width="34px"
                     height="27px"
                     viewBox="0 0 34 27"
-                    enable-background="new 0 0 34 27"
                 >
                     <rect
                         fill={isMenu ? "#00000" : "#FFFFFF"}

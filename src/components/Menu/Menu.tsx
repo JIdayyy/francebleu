@@ -38,6 +38,7 @@ export default function Menu({ setIsOpen }: Props): ReactElement {
                     {state.tracks.map((track) => (
                         <motion.button
                             onClick={handleClick}
+                            key={track.id}
                             value={track.id}
                             className={`text-gray-900 w-full rounded-lg px-2 py-1 ${
                                 state.index + 1 === track.id && "bg-gray-400"
