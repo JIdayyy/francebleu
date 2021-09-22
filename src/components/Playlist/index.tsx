@@ -14,23 +14,15 @@ export function Playlist(): JSX.Element {
                         } w-full px-5  `}
                     >
                         <button
-<<<<<<< HEAD
-                            className="font-bold flex items-center align-middle justify-center"
-=======
                             className="font-bold flex items-center align-middle justify-center w-full"
->>>>>>> ebfe7b346c042e586808058ebc3baebf5a0591ad
                             onClick={() => state.setIndex(track.id - 1)}
                         >
                             {track.name}{" "}
                             {state.index + 1 === track.id && (
-<<<<<<< HEAD
-                                <img src="/SOUCOUPE.png" className="w-10" />
-=======
                                 <img
                                     src="/SOUCOUPE.png"
                                     className="w-10 mx-2"
                                 />
->>>>>>> ebfe7b346c042e586808058ebc3baebf5a0591ad
                             )}
                         </button>
                     </li>
