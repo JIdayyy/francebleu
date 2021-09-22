@@ -150,12 +150,7 @@ export function Playbar(): JSX.Element {
                       )
                     : "00:00"}
             </div>
-            <audio
-                controls
-                preload="auto"
-                ref={audioRef}
-                src={state.onListen}
-            ></audio>
+            <audio preload="auto" ref={audioRef} src={state.onListen}></audio>
         </div>
     );
 }
