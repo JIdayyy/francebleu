@@ -3,7 +3,7 @@
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
   "/": "pages/index.js",
-  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
+  "/api/count/[id]": "pages/api/count/[id].js",
   "/api/count": "pages/api/count.js",
-  "/api/count/[id]": "pages/api/count/[id].js"
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js"
 }

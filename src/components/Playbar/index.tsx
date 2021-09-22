@@ -25,14 +25,16 @@ export function Playbar(): JSX.Element {
 
     const controls = {
         play: () => state.setIsPlaying(true),
-        pause: () => state.setIsPlaying(false),
+        pause: () => {
+            state.setIsPlaying(false);
+            audioRef.current!.pause();
+        },
         forward: () => {
             if (state.index === state.tracks.length - 1) {
                 state.setIndex(0);
                 return state.setOnListen(state.tracks[state.index].url);
             }
             state.setIndex((c) => c + 1);
-            state.setOnListen(state.tracks[state.index].url);
         },
         backward: () => {
             if (state.index === 0) {
@@ -51,9 +53,10 @@ export function Playbar(): JSX.Element {
             audioRef.current!.volume = state.volume;
         },
     };
-
-    useEffect(() => {
-        audioRef.current?.load();
+    console.log(state.onListen);
+    const effect = async () => {
+        state.setOnListen(state.tracks[state.index].url);
+        await audioRef.current?.load();
         if (state.isPlaying === true) {
             axios.put(
                 `${process.env.NEXT_PUBLIC_API_URL}/${
@@ -63,11 +66,14 @@ export function Playbar(): JSX.Element {
             refetch();
             state.setCount(data[state.index].count);
             state.setTrackCount(data);
-            audioRef.current?.play();
+            await audioRef.current?.play();
         }
         if (!isLoading) {
             state.setCount(data[state.index].count);
         }
+    };
+    useEffect(() => {
+        effect();
     }, [state.index, state.isPlaying]);
 
     useEffect(() => {
@@ -108,10 +114,10 @@ export function Playbar(): JSX.Element {
             >
                 <Image src="/icons/backward.png" width={22} height={22} />
             </button>
-            {!state.isPlaying ? (
+            {!state.isPlaying && !isLoading ? (
                 <button
                     className="mx-2 transform -translate-x-1 translate-y-1"
-                    onClick={controls.play}
+                    onClick={() => state.setIsPlaying(true)}
                 >
                     <Image src="/icons/play.png" width={22} height={22} />
                 </button>
