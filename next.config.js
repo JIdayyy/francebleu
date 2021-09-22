@@ -4,7 +4,7 @@ module.exports = compose([
     {
         webpack(config) {
             config.module.rules.push({
-                test: /\.mp4$/,
+                test: /\.mp3$/,
                 use: {
                     loader: "file-loader",
                 },

@@ -10,7 +10,7 @@ const Home: React.FC = () => {
     const state = useAppContext();
 
     return (
-        <div className="w-full z-0 relative flex flex-col items-center align-middle justify-center h-screen  md:px-56 bg-black">
+        <div className="w-full z-0 relative flex flex-col items-center align-middle justify-center h-screen  md:pl-80 bg-black">
             <AnimatePresence>
                 {isMenu && <Menu setIsOpen={setIsMenu} />}
             </AnimatePresence>
