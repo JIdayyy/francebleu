@@ -2,6 +2,7 @@ import { useAppContext } from "src/State/AppState";
 
 export function Playlist(): JSX.Element {
     const state = useAppContext();
+    console.log(state.index, "playlist");
 
     return (
         <div className="bg-black absolute hidden h-full top-0 left-0 lg:flex flex-col items-center align-middle justify-center text-base font-semibold text-gray-400 z-40">

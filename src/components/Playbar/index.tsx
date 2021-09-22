@@ -26,13 +26,30 @@ export function Playbar(): JSX.Element {
     const controls = {
         play: () => state.setIsPlaying(true),
         pause: () => state.setIsPlaying(false),
-        forward: () => {
+        forward: async () => {
             if (state.index === state.tracks.length - 1) {
                 state.setIndex(0);
                 return state.setOnListen(state.tracks[state.index].url);
             }
-            state.setIndex((c) => c + 1);
+
+            try {
+                console.log(state.index);
+
+                state.setIndex((c) => {
+                    if (c === 0) {
+                        return 1;
+                    } else {
+                        return c + 1;
+                    }
+                });
+
+                console.log(state.index);
+            } catch (error) {
+                console.log(error);
+            }
+
             state.setOnListen(state.tracks[state.index].url);
+            console.log(state.index, state.onListen);
         },
         backward: () => {
             if (state.index === 0) {
@@ -53,27 +70,25 @@ export function Playbar(): JSX.Element {
     };
 
     const handlePlay = async () => {
-        try {
-            if (state.isPlaying === true) {
-                axios
-                    .put(
-                        `${process.env.NEXT_PUBLIC_API_URL}/${
-                            state.tracks[state.index].id
-                        }`,
-                    )
-                    .catch((e) => console.log(e));
-                refetch();
-                state.setCount(data[state.index].count);
-                state.setTrackCount(data);
-                await audioRef.current?.play();
-            }
-        } catch (error) {
-            console.log(error);
+        audioRef.current?.load();
+        if (state.isPlaying === true && isLoading === false) {
+            axios
+                .put(
+                    `${process.env.NEXT_PUBLIC_API_URL}/${
+                        state.tracks[state.index].id
+                    }`,
+                )
+                .catch((e) => console.log(e));
+            refetch();
+            state.setCount(data[state.index].count);
+            state.setTrackCount(data);
+
+            await audioRef.current?.play();
         }
     };
 
     useEffect(() => {
-        audioRef.current?.load();
+        console.log("play");
         handlePlay();
         if (!isLoading) {
             state.setCount(data[state.index].count);
@@ -118,12 +133,13 @@ export function Playbar(): JSX.Element {
             >
                 <Image src="/icons/backward.png" width={22} height={22} />
             </button>
-            {!state.isPlaying ? (
+            {!state.isPlaying && !isLoading ? (
                 <button
                     className="mx-2 transform -translate-x-1 translate-y-1"
                     onClick={() => {
-                        audioRef.current?.play();
                         state.setIsPlaying(true);
+
+                        audioRef.current?.play();
                     }}
                 >
                     <Image src="/icons/play.png" width={22} height={22} />
