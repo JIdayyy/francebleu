@@ -3,7 +3,7 @@ import { Playlist } from "@components/Playlist";
 import { Playbar } from "@components/Playbar";
 import { useAppContext } from "src/State/AppState";
 import { useState } from "react";
-import { TrackC } from "../src/State/AppState";
+
 import { AnimatePresence, motion } from "framer-motion";
 import Menu from "@components/Menu/Menu";
 const Home: React.FC = () => {
@@ -53,7 +53,8 @@ const Home: React.FC = () => {
             </button>
 
             <div className="z-0 relative w-full h-full">
-                <div className="absolute hidden sm:flex z-40 top-10 right-10">
+                <div className="fixed w-full h-screen z-50 bg-black md:bg-opacity-50 bg-opacity-90"></div>
+                <div className="absolute hidden  sm:flex z-40 top-10 right-10">
                     <a href="https://www.lezardsquibougent.com/">
                         <Image
                             width={130}
@@ -65,7 +66,7 @@ const Home: React.FC = () => {
                 </div>
                 <Image className="z-0" layout="fill" src="/bgalien.jpg" />
             </div>
-            <div className="absolute text-sm items-center align-middle justify-between top-10 w-auto sm:top-20 sm:w-96 flex flex-col text-gray-200 font-bold bg-black rounded-lg bg-opacity-90 p-5">
+            <div className="absolute text-sm items-center w-full align-middle justify-between top-14  sm:top-20 sm:w-96 flex flex-col text-gray-200 font-bold bg-black md:rounded-lg bg-opacity-90 p-5">
                 {state.tracks[state.index].name}
                 <span className="font-normal text-xs">
                     ( {state.count} écoutes sur cet épisode)
@@ -74,7 +75,7 @@ const Home: React.FC = () => {
                     ( {count} écoutes au Total)
                 </span>
             </div>
-            <motion.div className="z-40 absolute text-white sm:w-96 bg-black bg-opacity-90 md:rounded-lg p-10">
+            <motion.div className="z-40 absolute text-7 md:text-base text-white sm:w-96 bg-black bg-opacity-90 md:rounded-lg p-10">
                 Un feuilleton proposé par la Compagnie Lézards qui Bougent,
                 imaginé et écrit par les jeunes de l'Espace Socio-Culturel
                 Municipal et de la Maison de la Vie Citoyenne Saint-Étienne de
