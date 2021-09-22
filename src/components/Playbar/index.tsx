@@ -53,7 +53,7 @@ export function Playbar(): JSX.Element {
             audioRef.current!.volume = state.volume;
         },
     };
-    console.log(state.onListen);
+
     const effect = async () => {
         state.setOnListen(state.tracks[state.index].url);
         await audioRef.current?.load();
@@ -68,10 +68,8 @@ export function Playbar(): JSX.Element {
             state.setTrackCount(data);
             await audioRef.current?.play();
         }
-        if (!isLoading) {
-            state.setCount(data[state.index].count);
-        }
     };
+
     useEffect(() => {
         effect();
     }, [state.index, state.isPlaying]);
@@ -117,7 +115,10 @@ export function Playbar(): JSX.Element {
             {!state.isPlaying && !isLoading ? (
                 <button
                     className="mx-2 transform -translate-x-1 translate-y-1"
-                    onClick={() => state.setIsPlaying(true)}
+                    onClick={() => {
+                        audioRef.current?.play();
+                        state.setIsPlaying(true);
+                    }}
                 >
                     <Image src="/icons/play.png" width={22} height={22} />
                 </button>

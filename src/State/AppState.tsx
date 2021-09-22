@@ -84,7 +84,6 @@ export function AppContextWrapper({
     const [volume, setVolume] = useState(0.5);
     const [trackCount, setTrackCount] = useState<[]>([]);
     const [count, setCount] = useState<number>(0);
-    console.log(index);
 
     return (
         <AppState.Provider
