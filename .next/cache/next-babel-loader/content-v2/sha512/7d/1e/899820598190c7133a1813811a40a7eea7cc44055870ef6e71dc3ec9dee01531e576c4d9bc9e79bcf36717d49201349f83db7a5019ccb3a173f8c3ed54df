@@ -1,1 +1,0 @@
-{"ast":null,"code":"var secondsToHms = function secondsToHms(d) {\n  d = Number(d);\n  var m = Math.floor(d % 3600 / 60);\n  var s = Math.floor(d % 3600 % 60);\n  return \"0\" + m + \":\" + s;\n};\n\nexport default secondsToHms;","map":null,"metadata":{},"sourceType":"module"}

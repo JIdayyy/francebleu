@@ -52,19 +52,29 @@ export function Playbar(): JSX.Element {
         },
     };
 
+    const handlePlay = async () => {
+        try {
+            if (state.isPlaying === true) {
+                axios
+                    .put(
+                        `${process.env.NEXT_PUBLIC_API_URL}/${
+                            state.tracks[state.index].id
+                        }`,
+                    )
+                    .catch((e) => console.log(e));
+                refetch();
+                state.setCount(data[state.index].count);
+                state.setTrackCount(data);
+                await audioRef.current?.play();
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     useEffect(() => {
         audioRef.current?.load();
-        if (state.isPlaying === true) {
-            axios.put(
-                `${process.env.NEXT_PUBLIC_API_URL}/${
-                    state.tracks[state.index].id
-                }`,
-            );
-            refetch();
-            state.setCount(data[state.index].count);
-            state.setTrackCount(data);
-            audioRef.current?.play();
-        }
+        handlePlay();
         if (!isLoading) {
             state.setCount(data[state.index].count);
         }
@@ -111,7 +121,10 @@ export function Playbar(): JSX.Element {
             {!state.isPlaying ? (
                 <button
                     className="mx-2 transform -translate-x-1 translate-y-1"
-                    onClick={controls.play}
+                    onClick={() => {
+                        audioRef.current?.play();
+                        state.setIsPlaying(true);
+                    }}
                 >
                     <Image src="/icons/play.png" width={22} height={22} />
                 </button>
@@ -137,7 +150,12 @@ export function Playbar(): JSX.Element {
                       )
                     : "00:00"}
             </div>
-            <audio ref={audioRef} src={state.onListen}></audio>
+            <audio
+                controls
+                preload="auto"
+                ref={audioRef}
+                src={state.onListen}
+            ></audio>
         </div>
     );
 }
