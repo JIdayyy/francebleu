@@ -3,11 +3,16 @@ import { Playlist } from "@components/Playlist";
 import { Playbar } from "@components/Playbar";
 import { useAppContext } from "src/State/AppState";
 import { useState } from "react";
+import { TrackC } from "../src/State/AppState";
 import { AnimatePresence, motion } from "framer-motion";
 import Menu from "@components/Menu/Menu";
 const Home: React.FC = () => {
     const [isMenu, setIsMenu] = useState<boolean>(false);
     const state = useAppContext();
+
+    const count = state.trackCount!.reduce((prev, curr) => {
+        return prev + curr.count;
+    }, 0);
 
     return (
         <div className="w-full z-0 relative flex flex-col items-center align-middle justify-center h-screen  md:pl-80 bg-black">
@@ -46,22 +51,28 @@ const Home: React.FC = () => {
                     />
                 </svg>
             </button>
-            <div className="absolute hidden sm:flex z-40 top-10 left-10">
-                <a href="https://www.lezardsquibougent.com/">
-                    <Image
-                        width={130}
-                        height={50}
-                        src="/logo.webp"
-                        quality={100}
-                    />
-                </a>
-            </div>
+
             <div className="z-0 relative w-full h-full">
+                <div className="absolute hidden sm:flex z-40 top-10 right-10">
+                    <a href="https://www.lezardsquibougent.com/">
+                        <Image
+                            width={130}
+                            height={50}
+                            src="/logo.webp"
+                            quality={100}
+                        />
+                    </a>
+                </div>
                 <Image className="z-0" layout="fill" src="/bgalien.jpg" />
             </div>
             <div className="absolute text-sm items-center align-middle justify-between top-10 w-auto sm:top-20 sm:w-96 flex flex-col text-gray-200 font-bold bg-black rounded-lg bg-opacity-90 p-5">
                 {state.tracks[state.index].name}
-                <span className="font-normal">( {state.count} écoutes )</span>
+                <span className="font-normal text-xs">
+                    ( {state.count} écoutes sur cet épisode)
+                </span>
+                <span className="font-normal text-xs">
+                    ( {count} écoutes au Total)
+                </span>
             </div>
             <motion.div className="z-40 absolute text-white sm:w-96 bg-black bg-opacity-90 md:rounded-lg p-10">
                 Un feuilleton proposé par la Compagnie Lézards qui Bougent,

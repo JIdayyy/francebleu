@@ -13,7 +13,7 @@ interface Track {
     description: string;
     url: string;
 }
-interface TrackC {
+export interface TrackC {
     id: number;
     name: string;
     description: string;
