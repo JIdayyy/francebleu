@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Image from "next/image";
 import { Playlist } from "@components/Playlist";
 import { Playbar } from "@components/Playbar";
